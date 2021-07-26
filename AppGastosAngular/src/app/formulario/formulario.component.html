@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-6 d-flex justify-content-center my-4">
+      <h1 class="title">{{ tituloForm }}</h1>
+    </div>
+  </div>
+
+  <form action="" id="formulario" class="form-group row g-3">
+    <div class="row justify-content-lg-center my-4">
+      <div class="col-12 col-lg-3 py-2 py-lg-0" id="grupo_importe">
+        <label for="importe" id="label_importe" class="label_importe p-2">Importe</label>
+        <input
+          id="importe"
+          name="importe"
+          type="number"
+          value=""
+          class="form-control"
+          placeholder="Importe"
+          (input)="addImporte($event)"
+          autofocus/>
+      </div>
+
+      <div class="col col-sm-12 col-lg-7" id="grupo_descripcion">
+        <label for="descripcion" id="label_descripcion" class="label_descripcion p-1">Descripción</label>
+        <input
+          id="descripcion"
+          name="descripcion"
+          type="text"
+          value=""
+          class="form-control m-2"
+          placeholder="Descripcion"
+          (input)="addDescripcion($event)"
+          autofocus/>
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-info text-white m-3 p-2 col-4 mx-auto"
+      id="btn"
+      [disabled]="habilitar"
+      (click)="addItem()">
+      Agregar
+    </button>
+  </form>
+  <hr>
+</div>

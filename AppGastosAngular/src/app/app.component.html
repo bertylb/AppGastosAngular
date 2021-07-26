@@ -1,0 +1,19 @@
+<title>{{ titulo }}</title>
+
+<app-formulario></app-formulario>
+
+<app-tarjetas></app-tarjetas>
+
+<div class="container w-50">
+    <div class="d-flex justify-content-around">
+        <div class="lista_descripcion p-2 m-2 bg-info text-white">DESCRIPCIÓN</div>
+        <div class="lista_importe p-2 m-2 bg-info text-white">IMPORTE</div>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li *ngFor="let lista of listado" class="list-group-item d-flex justify-content-around align-items-center">
+            {{lista.descripcion}}
+            <span>{{lista.importe}}</span>
+        </li>
+        <br>
+    </ul>
+</div>
