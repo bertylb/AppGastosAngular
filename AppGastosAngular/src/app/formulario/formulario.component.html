@@ -8,7 +8,9 @@
   <form action="" id="formulario" class="form-group row g-3">
     <div class="row justify-content-lg-center my-4">
       <div class="col-12 col-lg-3 py-2 py-lg-0" id="grupo_importe">
-        <label for="importe" id="label_importe" class="label_importe p-2">Importe</label>
+        <label for="importe" id="label_importe" class="label_importe p-2"
+          >Importe</label
+        >
         <input
           id="importe"
           name="importe"
@@ -16,12 +18,18 @@
           value=""
           class="form-control"
           placeholder="Importe"
-          (input)="addImporte($event)"
-          autofocus/>
+          [(ngModel)]="importe"
+          autofocus
+        />
       </div>
 
       <div class="col col-sm-12 col-lg-7" id="grupo_descripcion">
-        <label for="descripcion" id="label_descripcion" class="label_descripcion p-1">Descripción</label>
+        <label
+          for="descripcion"
+          id="label_descripcion"
+          class="label_descripcion p-1"
+          >Descripción</label
+        >
         <input
           id="descripcion"
           name="descripcion"
@@ -29,8 +37,9 @@
           value=""
           class="form-control m-2"
           placeholder="Descripcion"
-          (input)="addDescripcion($event)"
-          autofocus/>
+          [(ngModel)]="descripcion"
+          autofocus
+        />
       </div>
     </div>
 
@@ -39,9 +48,10 @@
       class="btn btn-info text-white m-3 p-2 col-4 mx-auto"
       id="btn"
       [disabled]="habilitar"
-      (click)="addItem()">
+      (click)="addItem()"
+    >
       Agregar
     </button>
   </form>
-  <hr>
+  <hr />
 </div>
