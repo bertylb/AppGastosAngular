@@ -1,31 +1,18 @@
-import { Component, OnInit} from '@angular/core';
-import { Listado } from '../listado.model';
-import { RegistroService } from '../registro.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { ListadoService } from '../services/listado.service';
 
 @Component({
   selector: 'app-tarjetas',
   templateUrl: './tarjetas.component.html',
-  styleUrls: ['./tarjetas.component.css']
+  styleUrls: ['./tarjetas.component.css'],
 })
 export class TarjetasComponent implements OnInit {
-
   gastoActual: number = 5000;
-  saldoIngresado:number = 5000;
-  
-  listado: Listado[] = [];
-  saldoActual = 0; 
+  saldoIngresado: number = 5000;
+  // la variable saldoActual viene como parámetro (Input) desde el componente padre
+  @Input() saldoActual = 0;
 
-  constructor(private registroService: RegistroService) { }
+  constructor(private listadoService: ListadoService) {}
 
-  ngOnInit(): void {
-    this.listado = this.registroService.listadoRegistro;
-
-    this.listado.forEach((lista)=> {
-      this.saldoActual += lista.importe;
-      console.log(this.saldoActual);
-    });
-  }
-
+  ngOnInit(): void {}
 }
-
-  

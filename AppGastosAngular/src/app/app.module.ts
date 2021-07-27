@@ -4,20 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { FormularioComponent } from './formulario/formulario.component';
-import { RegistroService } from './registro.service';
+import { ListadoService } from './services/listado.service';
 import { TarjetasComponent } from './tarjetas/tarjetas.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FormularioComponent,
-    TarjetasComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule
-  ],
-  providers: [RegistroService],
-  bootstrap: [AppComponent]
+  declarations: [AppComponent, FormularioComponent, TarjetasComponent],
+  imports: [BrowserModule, FormsModule],
+  providers: [ListadoService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

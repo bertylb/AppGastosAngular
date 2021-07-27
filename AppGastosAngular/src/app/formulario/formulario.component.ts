@@ -1,41 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { Listado } from '../listado.model';
-import { RegistroService } from '../registro.service';
+import { ItemListado } from '../model/item-listado.model';
+import { ListadoService } from '../services/listado.service';
 
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
-  styleUrls: ['./formulario.component.css']
+  styleUrls: ['./formulario.component.css'],
 })
 export class FormularioComponent implements OnInit {
-
-  tituloForm= "Gestión de Gastos";
-
+  tituloForm = 'Gestión de Gastos';
   importe = 0;
-  descripcion = "";
+  descripcion = '';
   habilitar = false;
-  
-  //output guardar en la variable el objeto de tipo listado para ser enviada hacia el componente padre, 
-  //eventEmitter creara un evento con esa variable 
-  //el evento sera un objeto de tipo Listado(objeto) que tendra importe y descripcion
-  // @Output() itemCreado = new EventEmitter<Listado>();
 
-  addImporte(event: Event){
-    this.importe = parseInt((<HTMLInputElement>event.target).value);
-  }
-  addDescripcion(event: Event){
-    this.descripcion = (<HTMLInputElement>event.target).value;
+  resetForm() {
+    this.importe = 0;
+    this.descripcion = '';
   }
 
-  constructor(private registroService: RegistroService) { }
+  constructor(private listadoService: ListadoService) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  addItem() {
+    const item = new ItemListado(this.importe, this.descripcion);
+    this.listadoService.addListadoItem(item);
+    this.resetForm();
   }
-
-  addItem(){
-    let item = new Listado(this.importe, this.descripcion);
-    //con emit se emitira el evento y se guardara en itemCreado el item que contine el objeto de tipo Listado
-    // this.itemCreado.emit(item);
-    this.registroService.itemAgregado(item);
-    }
 }
