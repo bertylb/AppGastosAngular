@@ -7,10 +7,10 @@ import { ListadoService } from '../services/listado.service';
   styleUrls: ['./tarjetas.component.css'],
 })
 export class TarjetasComponent implements OnInit {
-  gastoActual: number = 5000;
+  saldoActual: number = 5000;
   saldoIngresado: number = 5000;
   // la variable saldoActual viene como parámetro (Input) desde el componente padre
-  @Input() saldoActual = 0;
+  @Input() gastoActual = 0;
 
   constructor(private listadoService: ListadoService) {}
 

@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
       this.sumaImportes = 0;
       listado.forEach((item) => {
         this.sumaImportes += item.importe;
+        console.log(this.sumaImportes);
       });
     });
   }
