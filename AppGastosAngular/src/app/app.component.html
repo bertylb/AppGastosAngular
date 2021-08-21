@@ -1,22 +1,26 @@
 <title>{{ titulo }}</title>
 
 <app-formulario></app-formulario>
-
 <app-tarjetas [gastoActual]="sumaImportes"></app-tarjetas>
 
 <div class="container w-50">
+  
   <div class="d-flex justify-content-around">
     <div class="lista_descripcion p-2 m-2 bg-info text-white">DESCRIPCIÓN</div>
     <div class="lista_importe p-2 m-2 bg-info text-white">IMPORTE</div>
   </div>
   <ul class="list-group list-group-flush">
     <li
-      *ngFor="let lista of listado"
-      class="list-group-item d-flex justify-content-around align-items-center"
+    *ngFor="let item of listado"
+    class="list-group-item d-flex justify-content-around align-items-center"
     >
-      {{ lista.descripcion }}
-      <span>{{ lista.importe }}</span>
+      {{ item.descripcion }}
+      <span>{{ item.importe }}</span>
+      <button>
+        <i class="ion-ios-close-outline" (click)="eliminarItem(item)"></i>
+      </button>
     </li>
     <br />
   </ul>
+
 </div>

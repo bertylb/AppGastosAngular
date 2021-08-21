@@ -1,6 +1,8 @@
+import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ItemListado } from '../model/item-listado.model';
 
+@Injectable()
 export class ListadoService {
   private listado: ItemListado[] = [];
   // BehaviorSubject es un observable, con la caracteristica que conserva el ultimo valor emitido
@@ -9,8 +11,7 @@ export class ListadoService {
   constructor() {
     this.listado = [
       new ItemListado(500, 'Masitas'),
-      new ItemListado(300, 'Gaseosas'),
-      new ItemListado(50, 'Helados'),
+      new ItemListado(300, 'Gaseosas')
     ];
     // se "emite" el observable, haya o no alguien "escuchando"
     this.listadoSubject.next(this.listado);
@@ -27,5 +28,10 @@ export class ListadoService {
 
   getListadoSubject() {
     return this.listadoSubject;
+  }
+
+  eliminar(item: ItemListado){
+    const indice: number = this.listado.indexOf(item);
+    this.listado.splice(indice,1);
   }
 }

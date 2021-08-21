@@ -9,13 +9,17 @@ import { ListadoService } from './services/listado.service';
 })
 export class AppComponent implements OnInit {
   titulo = 'Gestión de Gastos';
+
   listado: ItemListado[] = [];
+
   sumaImportes: number = 0;
 
-  constructor(private listadoService: ListadoService) {}
+  constructor(private listadoService: ListadoService) {
+    // this.listado = listadoService.getListado();
+  }
 
   ngOnInit(): void {
-    // realizamos la suscripción a la lista que guarda el Service.
+    //realizamos la suscripción a la lista que guarda el Service.
     // Cada vez que se emita un cambio en la misma (addItem, por ejemplo), este método se va a ejecutar
     this.listadoService.getListadoSubject().subscribe((listado) => {
       // se resetea el valor a 0 para sumar el total nuevamente
@@ -23,8 +27,13 @@ export class AppComponent implements OnInit {
       this.sumaImportes = 0;
       listado.forEach((item) => {
         this.sumaImportes += item.importe;
-        console.log(this.sumaImportes);
       });
     });
   }
+
+  eliminarItem(item: ItemListado){
+    this.listadoService.eliminar(item);
+    this.sumaImportes -= item.importe;
+  }
+
 }

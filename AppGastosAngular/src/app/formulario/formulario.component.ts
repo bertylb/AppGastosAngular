@@ -9,9 +9,9 @@ import { ListadoService } from '../services/listado.service';
 })
 export class FormularioComponent implements OnInit {
   tituloForm = 'Gestión de Gastos';
-  importe = 0;
-  descripcion = '';
-  habilitar = false;
+  importe:number = 0;
+  descripcion:string = '';
+  habilitar:boolean = false;
 
   resetForm() {
     this.importe = 0;
