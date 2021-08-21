@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-md-center">
-    <div class="col col-lg-6 d-flex justify-content-center my-4">
+    <div class="bg-info d-flex justify-content-center p-4">
       <h1 class="title">{{ tituloForm }}</h1>
     </div>
   </div>
@@ -8,8 +8,11 @@
 
   <form action="" id="formulario" class="form-group row g-3">
     <div class="row justify-content-lg-center my-4">
-      <div class="col-12 col-lg-3 py-2 py-lg-0" id="grupo_importe">
-        <label for="importe" id="label_importe" class="label_importe p-2"
+      <div class="col col-lg-4 py-2 py-lg-0">
+        <label 
+          for="importe" 
+          id="label_importe"
+          class="label_importe p-2"
           >Importe</label
         >
         <input
@@ -24,7 +27,7 @@
         />
       </div>
 
-      <div class="col col-sm-12 col-lg-7" id="grupo_descripcion">
+      <div class="col col-lg-4">
         <label
           for="descripcion"
           id="label_descripcion"
@@ -42,19 +45,17 @@
           autofocus
         />
       </div>
+     
+      <button
+        type="submit"
+        class="btn btn-info text-white col col-lg-4"
+        id="btn"
+        [disabled]="habilitar"
+        (click)="addItem()"
+        >
+        Agregar
+      </button>
     </div>
-
-    <button
-      type="submit"
-      class="btn btn-info text-white m-3 p-2 col-4 mx-auto"
-      id="btn"
-      [disabled]="habilitar"
-      (click)="addItem()"
-    >
-      Agregar
-    </button>
-    <h3>{{importe}}</h3>
-    <h3>{{descripcion}}</h3>
   </form>
   <hr />
 </div>

@@ -22,7 +22,7 @@ export class ListadoService {
   }
 
   addListadoItem(item: ItemListado) {
-    this.listado.push(item);
+    this.listado.unshift(item);
     this.listadoSubject.next(this.listado);
   }
 

@@ -3,24 +3,31 @@
 <app-formulario></app-formulario>
 <app-tarjetas [gastoActual]="sumaImportes"></app-tarjetas>
 
-<div class="container w-50">
-  
-  <div class="d-flex justify-content-around">
-    <div class="lista_descripcion p-2 m-2 bg-info text-white">DESCRIPCIÓN</div>
-    <div class="lista_importe p-2 m-2 bg-info text-white">IMPORTE</div>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li
-    *ngFor="let item of listado"
-    class="list-group-item d-flex justify-content-around align-items-center"
-    >
-      {{ item.descripcion }}
-      <span>{{ item.importe }}</span>
-      <button>
-        <i class="ion-ios-close-outline" (click)="eliminarItem(item)"></i>
-      </button>
-    </li>
-    <br />
-  </ul>
+<div class="container w-80">
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Importe</th>
+        <th scope="col"></th>
+        <th scope="col">Operación</th>
+      </tr>
+    </thead>
+    <tbody  *ngFor="let item of listado">
+      <tr>
+        <th scope="row"></th>
+        <td>{{ item.descripcion | uppercase }}</td>
+        <td class="text-success">{{ item.importe | currency }}</td>
+        <td></td>
+        <td>
+          <button class="btn btn-danger btn-sm"  (click)="eliminarItem(item)">
+            eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
 </div>
