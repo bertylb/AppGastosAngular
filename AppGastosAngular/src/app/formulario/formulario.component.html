@@ -1,61 +1,55 @@
 <div class="container">
-  <div class="row justify-content-md-center">
+  <div class="row justify-content-center">
     <div class="bg-info d-flex justify-content-center p-4">
       <h1 class="title">{{ tituloForm }}</h1>
     </div>
   </div>
 
+  <form class="form-group row g-3" (ngSubmit)="f.form.valid && addItem()" #f="ngForm">
+    <div class="row justify-content-lg-center m-5 border-dark">
 
-  <form action="" id="formulario" class="form-group row g-3">
-    <div class="row justify-content-lg-center my-4">
-      <div class="col col-lg-4 py-2 py-lg-0">
+      <div class="col col-lg-4 d-flex justify-content-start align-items-center">
         <label 
           for="importe" 
           id="label_importe"
-          class="label_importe p-2"
-          >Importe</label
-        >
+          class="">
+          Importe: 
+          </label>
         <input
-          id="importe"
           name="importe"
           type="number"
-          value=""
           class="form-control"
           placeholder="Importe"
           [(ngModel)]="importe"
           autofocus
-        />
+          required/>
       </div>
 
-      <div class="col col-lg-4">
+      <div class="col col-lg-4 d-flex justify-content-start align-items-center">
         <label
           for="descripcion"
           id="label_descripcion"
-          class="label_descripcion p-1"
-          >Descripción</label
-        >
+          class="label_descripcion">
+          Descripción: 
+        </label>
         <input
-          id="descripcion"
           name="descripcion"
           type="text"
-          value=""
-          class="form-control m-2"
+          class="form-control"
           placeholder="Descripcion"
           [(ngModel)]="descripcion"
           autofocus
-        />
+          required/>
       </div>
-     
-      <button
-        type="submit"
-        class="btn btn-info text-white col col-lg-4"
-        id="btn"
-        [disabled]="habilitar"
-        (click)="addItem()"
-        >
-        Agregar
-      </button>
+
+      <div class="col col-3 d-flex justify-content-start align-items-center">
+        <button
+          type="submit"
+          class="btn btn-info text-white col col-lg-4">
+          Agregar
+        </button>
+      </div>
+
     </div>
   </form>
-  <hr />
 </div>

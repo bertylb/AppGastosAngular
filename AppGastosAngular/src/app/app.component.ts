@@ -15,7 +15,6 @@ export class AppComponent implements OnInit {
   sumaImportes: number = 0;
 
   constructor(private listadoService: ListadoService) {
-    // this.listado = listadoService.getListado();
   }
 
   ngOnInit(): void {
@@ -32,8 +31,11 @@ export class AppComponent implements OnInit {
   }
 
   eliminarItem(item: ItemListado){
-    this.listadoService.eliminar(item);
-    this.sumaImportes -= item.importe;
+    let confirmar = confirm("¿Está seguro de eliminar este item?");
+    if(confirmar){
+      this.listadoService.eliminar(item);
+      this.sumaImportes -= item.importe;
+    }
   }
 
 }
