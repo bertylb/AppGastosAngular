@@ -20,7 +20,7 @@ export class TarjetasComponent implements OnInit, OnChanges{
     this.saldoActual = 5000;
     this.saldoActual -= this.gastoActual;
   }
-  
+
   ngOnInit(): void {
   }
 

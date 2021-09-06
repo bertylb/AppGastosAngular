@@ -10,19 +10,34 @@ export class ListadoService {
 
   constructor() {
     this.listado = [
-      new ItemListado(500, 'Masitas'),
-      new ItemListado(300, 'Gaseosas')
+      // new ItemListado(500, 'Masitas'),
+      // new ItemListado(300, 'Gaseosas')
     ];
     // se "emite" el observable, haya o no alguien "escuchando"
+    this.getListado();
     this.listadoSubject.next(this.listado);
   }
 
   getListado() {
-    return this.listado;
+    // return this.listado;
+    if(localStorage.getItem('items') === null){
+      return this.listado;
+    } else {
+      this.listado = JSON.parse(localStorage.getItem('items') || '[]');
+      return this.listado;
+    }
   }
 
   addListadoItem(item: ItemListado) {
-    this.listado.unshift(item);
+    let items: ItemListado[] = [];
+    if(localStorage.getItem('items') === null){
+      items.unshift(item);
+      localStorage.setItem('items', JSON.stringify(items));
+    } else {
+      items = JSON.parse(localStorage.getItem('items') || '[]');
+      items.unshift(item);
+      localStorage.setItem('items', JSON.stringify(items));
+    }
     this.listadoSubject.next(this.listado);
   }
 
