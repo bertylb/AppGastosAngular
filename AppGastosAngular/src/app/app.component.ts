@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 import { ItemListado } from './model/item-listado.model';
 import { ListadoService } from './services/listado.service';
 
@@ -7,7 +8,11 @@ import { ListadoService } from './services/listado.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
+
 export class AppComponent implements OnInit {
+
+  subjet = new Subject<number>();
+
   titulo = 'Gestión de Gastos';
 
   listado: ItemListado[] = [];
@@ -31,7 +36,7 @@ export class AppComponent implements OnInit {
   }
 
   eliminarItem(item: ItemListado){
-    let confirmar = confirm("¿Está seguro de eliminar este item?");
+    let confirmar = confirm("¿Está seguro que desea eliminar este item?");
     if(confirmar){
       this.listadoService.eliminar(item);
       this.sumaImportes -= item.importe;

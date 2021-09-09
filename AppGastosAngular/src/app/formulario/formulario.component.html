@@ -9,11 +9,11 @@
     <div class="row justify-content-lg-center m-5 border-dark">
 
       <div class="col col-lg-4 d-flex justify-content-start align-items-center">
-        <label 
-          for="importe" 
+        <label
+          for="importe"
           id="label_importe"
           class="">
-          Importe: 
+          Importe:
           </label>
         <input
           name="importe"
@@ -30,7 +30,7 @@
           for="descripcion"
           id="label_descripcion"
           class="label_descripcion">
-          Descripción: 
+          Descripción:
         </label>
         <input
           name="descripcion"
@@ -45,7 +45,8 @@
       <div class="col col-3 d-flex justify-content-start align-items-center">
         <button
           type="submit"
-          class="btn btn-info text-white col col-lg-4">
+          class="btn btn-info text-white col col-lg-4"
+          [disabled]="habilitar">
           Agregar
         </button>
       </div>

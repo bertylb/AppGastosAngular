@@ -9,17 +9,12 @@ export class ListadoService {
   listadoSubject = new BehaviorSubject<ItemListado[]>(this.listado);
 
   constructor() {
-    this.listado = [
-      // new ItemListado(500, 'Masitas'),
-      // new ItemListado(300, 'Gaseosas')
-    ];
+    this.listado = [];
     // se "emite" el observable, haya o no alguien "escuchando"
-    this.getListado();
-    this.listadoSubject.next(this.listado);
+    this.listadoSubject.next(this.getListado());
   }
 
   getListado() {
-    // return this.listado;
     if(localStorage.getItem('items') === null){
       return this.listado;
     } else {
@@ -29,14 +24,13 @@ export class ListadoService {
   }
 
   addListadoItem(item: ItemListado) {
-    let items: ItemListado[] = [];
     if(localStorage.getItem('items') === null){
-      items.unshift(item);
-      localStorage.setItem('items', JSON.stringify(items));
+      this.listado.unshift(item);
+      localStorage.setItem('items', JSON.stringify(this.listado));
     } else {
-      items = JSON.parse(localStorage.getItem('items') || '[]');
-      items.unshift(item);
-      localStorage.setItem('items', JSON.stringify(items));
+      this.listado = JSON.parse(localStorage.getItem('items') || '[]');
+      this.listado.unshift(item);
+      localStorage.setItem('items', JSON.stringify(this.listado));
     }
     this.listadoSubject.next(this.listado);
   }
@@ -48,5 +42,6 @@ export class ListadoService {
   eliminar(item: ItemListado){
     const indice: number = this.listado.indexOf(item);
     this.listado.splice(indice,1);
+    localStorage.setItem('items', JSON.stringify(this.listado));
   }
 }
