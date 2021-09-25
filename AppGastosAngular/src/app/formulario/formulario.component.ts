@@ -30,9 +30,12 @@ export class FormularioComponent implements OnInit {
     if(this.saldoActual <= 0 || this.saldoActual < this.importe){
       alert("NO POSEE SALDO SUFICIENTE PARA REALIZAR LA OPERACION!");
     } else {
-      const item = new ItemListado(this.importe, this.descripcion);
+      const currentDate = new Date();
+
+      const item = new ItemListado(this.importe, this.descripcion, currentDate);
       this.listadoService.addListadoItem(item);
       this.resetForm();
+      console.log(item.date);
     }
   }
 
