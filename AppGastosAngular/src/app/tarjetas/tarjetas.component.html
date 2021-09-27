@@ -8,8 +8,10 @@
     </div>
     <div id="card_currentAmount" class="card mb-3" style="width: 30%;">
         <div class="card-header">Saldo Actual</div>
-        <div id="text_currentAmount" class="card-body text-success">
-            <h5 class="card-title text-success" id="saldo">{{ saldoActual | currency }}</h5>
+        <div id="text_currentAmount" class="card-body d-flex justify-content-between"
+                                    [ngClass]="claseSaldo ? 'text-success': 'text-danger'" >
+            <h5 class="card-title" id="saldo">{{ saldoActual | currency }}</h5>
+            <span>{{ porcentaje | percent: '2.1-2'}} </span>
         </div>
     </div>
     <div class="card mb-3" style="width: 30%;">

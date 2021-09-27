@@ -1,22 +1,23 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="bg-info d-flex justify-content-center p-4">
-      <h1 class="title">{{ tituloForm }}</h1>
-    </div>
+<div class="row justify-content-center">
+  <div class="bg-info d-flex justify-content-center p-4">
+    <h1 class="title">{{ tituloForm }}</h1>
   </div>
+</div>
 
-  <form class="form-group row g-3" (ngSubmit)="f.form.valid && addItem()" #f="ngForm">
-    <div class="row justify-content-lg-center m-5 border-dark">
+<div class="container my-5">
 
-      <div class="col col-lg-4 d-flex justify-content-start align-items-center">
+  <form class="form-inline row g-3" (ngSubmit)="f.form.valid && addItem()" #f="ngForm">
+
+      <div class="form-group col col-md-4">
         <label
           for="importe"
           id="label_importe"
-          class="">
-          Importe:
+          class="form-label">
+          Importe
           </label>
         <input
           name="importe"
+          id="importe"
           type="number"
           class="form-control"
           placeholder="Importe"
@@ -25,15 +26,16 @@
           required/>
       </div>
 
-      <div class="col col-lg-4 d-flex justify-content-start align-items-center">
+      <div class="form-group col col-md-6">
         <label
           for="descripcion"
           id="label_descripcion"
-          class="label_descripcion">
-          Descripción:
+          class="form-label">
+          Descripción
         </label>
         <input
           name="descripcion"
+          id="descripcion"
           type="text"
           class="form-control"
           placeholder="Descripcion"
@@ -42,15 +44,14 @@
           required/>
       </div>
 
-      <div class="col col-3 d-flex justify-content-start align-items-center">
+      <div class="form-group col col-md-2 d-flex align-self-end ">
         <button
           type="submit"
-          class="btn btn-info text-white col col-lg-4"
+          class="btn btn-info text-white flex-grow-1"
           [disabled]="habilitar">
           Agregar
         </button>
       </div>
 
-    </div>
   </form>
 </div>

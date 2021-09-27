@@ -8,6 +8,8 @@ import { Subject } from 'rxjs';
 })
 export class TarjetasComponent implements OnInit, OnChanges{
 
+  claseSaldo: boolean = true;
+  porcentaje: number = 0;
   saldoIngresado: number = 5000;
   saldoActual: number = 0;
   // la variable saldoActual viene como parámetro (Input) desde el componente padre
@@ -22,6 +24,14 @@ export class TarjetasComponent implements OnInit, OnChanges{
     this.saldoActual = 5000;
     this.saldoActual -= this.gastoActual;
     this.updateSaldo();
+
+    this.porcentaje = this.saldoActual/this.saldoIngresado;
+
+    if( this.porcentaje < 0.15){
+      this.claseSaldo = false;
+    }else{
+      this.claseSaldo = true;
+    }
   }
 
   ngOnInit(): void {

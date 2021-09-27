@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { ItemListado } from '../model/item-listado.model';
 import { ListadoService } from '../services/listado.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-formulario',
@@ -18,7 +19,8 @@ export class FormularioComponent implements OnInit {
 
   @Input() subjet!: Subject<number>; // ! indica que la variable no puede ser nula(?)
 
-  constructor(private listadoService: ListadoService) {}
+  constructor(private listadoService: ListadoService,
+                private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.subjet.subscribe((saldoActual: number) => {
@@ -31,11 +33,10 @@ export class FormularioComponent implements OnInit {
       alert("NO POSEE SALDO SUFICIENTE PARA REALIZAR LA OPERACION!");
     } else {
       const currentDate = new Date();
-
       const item = new ItemListado(this.importe, this.descripcion, currentDate);
       this.listadoService.addListadoItem(item);
       this.resetForm();
-      console.log(item.date);
+      this.toastr.success('El item fue agregado con exito', '¡ITEM AGREGADO!');
     }
   }
 
