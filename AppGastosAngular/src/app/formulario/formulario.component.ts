@@ -21,7 +21,7 @@ export class FormularioComponent implements OnInit {
 
   formulario: FormGroup;
 
-  reGexImporte = /^(1-9)?[0-9]{1,20}$/;
+  reGexImporte = /^[1-9]{1,20}[0-9]*$/;
   reGexDescripcion = /^[ a-zA-Z ]{1,20}$/;
 
   constructor(
