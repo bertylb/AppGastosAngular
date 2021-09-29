@@ -1,4 +1,5 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -17,7 +18,7 @@ export class TarjetasComponent implements OnInit, OnChanges{
 
   @Input() subjet!: Subject<number>; // ! indica que la variable no puede ser nula(?)
 
-  constructor(){
+  constructor(private toastr: ToastrService){
   }
 
   ngOnChanges(){
@@ -29,6 +30,11 @@ export class TarjetasComponent implements OnInit, OnChanges{
 
     if( this.porcentaje < 0.15){
       this.claseSaldo = false;
+      setTimeout(() => {
+        this.toastr.warning('Su saldo disponible se esta agotando', 'ALERTA!',{
+          timeOut: 1400,
+        });
+       }, 1800);
     }else{
       this.claseSaldo = true;
     }

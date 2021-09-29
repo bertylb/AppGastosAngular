@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { ItemListado } from './model/item-listado.model';
 import { ListadoService } from './services/listado.service';
@@ -19,7 +20,8 @@ export class AppComponent implements OnInit {
 
   sumaImportes: number = 0;
 
-  constructor(private listadoService: ListadoService) {
+  constructor(private listadoService: ListadoService,
+              private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -40,6 +42,9 @@ export class AppComponent implements OnInit {
     if(confirmar){
       this.listadoService.eliminar(item);
       this.sumaImportes -= item.importe;
+      this.toastr.success('Item eliminado con exito','OPERACIÓN EXITOSA', {
+        timeOut: 1300,
+      });
     }
   }
 
