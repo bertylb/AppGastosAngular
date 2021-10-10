@@ -11,7 +11,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./formulario.component.css'],
 })
 export class FormularioComponent implements OnInit {
-  tituloForm = 'Gestión de Gastos';
   importe: number = 0;
   descripcion: string = '';
   // habilitar: boolean = false;

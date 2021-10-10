@@ -1,23 +1,29 @@
-<title>{{ titulo }}</title>
+<div class="row justify-content-center">
+  <div class="bg-info d-flex justify-content-center p-4">
+    <h1 class="title">{{ titulo }}</h1>
+  </div>
+</div>
 
-<app-formulario [subjet]="subjet"></app-formulario>
-<app-tarjetas [gastoActual]="sumaImportes" [subjet]="subjet"></app-tarjetas>
+<div class="container-lg">
+  <app-formulario [subjet]="subjet"></app-formulario>
+  <app-tarjetas [gastoActual]="sumaImportes" [subjet]="subjet"></app-tarjetas>
+</div>
 
-<div class="container w-80">
+<div class="container-lg">
 
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col"></th>
-        <th scope="col">Descripción</th>
-        <th scope="col">Importe</th>
-        <th scope="col">Fecha</th>
-        <th scope="col">Operación</th>
+        <!-- <th scope="col"></th> -->
+        <th scope="col-6">Descripción</th>
+        <th scope="col-4">Importe</th>
+        <th scope="col-sm-3">Fecha</th>
+        <th scope="col-2">Operación</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of listado">
-        <th scope="row"></th>
+        <!-- <th scope="row"></th> -->
         <td>{{ item.descripcion | uppercase }}</td>
         <td class="text-success">{{ item.importe | currency }}</td>
         <td> {{ item.date | date: 'd/MM/y' }} </td>
